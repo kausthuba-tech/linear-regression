@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+url=r"C:\Users\USER\Desktop\price datset.csv"
+df=pd.read_csv(url)
+print(df)
+print(plt.xlabel("Area"))
+print(plt.ylabel("Price"))
+print(plt.title("House Price Prediction"))
+print(plt.scatter(df["area"],df["price"]))
+reg=linear_model.LinearRegression()
+reg.fit(df[["area"]],df[["price"]])
+pred=reg.predict([[3000]])
+print(pred)
+print(reg.coef_)
+print(reg.intercept_)
+print(plt.xlabel("Area"))
+print(plt.ylabel("Price"))
+print(plt.title("House Price Prediction"))
+print(plt.scatter(df["area"],df["price"]))
+print(plt.plot(df["area"],reg.predict(df[['area']]),color='blue'))
+m=reg.coef_
+c=reg.intercept_
+y=m*3000+c
+print(y)
